@@ -9,14 +9,45 @@ header{
     background-color: #ccb0ff;
     display: flex;
     justify-content: space-between;
+    
+    padding: 0px 50px;
+}   
+#home, #pose{
+    margin: 15px 0;
 }
-
 main{
-    height: 100vh;
+    height: 850px;
     background-color: #696969;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    
+}
+.Enemy{  
+    margin-top: 30px;
+    height: 300px;
+    width: 250px;
+    
+    margin-right: 0;
+    background-color: #fff;
+    text-align: center;
+}
+.SCreen{
     text-align: center;
 }
 #screeen{
+    
+    margin-top: 30px;
     background-color: #fff;
     z-index: 10;
+}
+.score{
+    margin-top: 30px;
+    height: 300px;
+    width: 250px;
+    
+    margin-right: 0;
+    background-color: #fff;
+    text-align: center;
 }
