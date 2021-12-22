@@ -10,10 +10,19 @@
 
 var canvas = document.getElementById("screeen");//canvasを読み込む
 var ctx = canvas.getContext("2d");
-var px = 40    //player x座標
-var py = 300    //player y座標
+var px = 190    //player x座標
+var py = 740    //player y座標
 var p_dx = 0    //player xの速さ  //追加
 var p_dy = 0    //player yの速さ  //追加
+
+var ps = 30
+
+//レーザーの座標
+var lx = [0];
+var ly = [800];
+var lw = 6
+var lh = 15
+
 
 //playerを描く関数
 function player_draw(){
@@ -22,6 +31,16 @@ function player_draw(){
     ctx.fillStyle = "#00ff00"
     ctx.fill()
     ctx.closePath()
+}
+//レーザー------------------------------------
+function l_draw(){
+    for(var i = 0;i < ly.length;i++){
+        ctx.beginPath() 
+        ctx.rect(lx[i],ly[i],6,15)
+        ctx.fillStyle="#ff0000"
+        ctx.fill()
+        ctx.closePath()
+    }
 }
 //キーが押されたときに実行される
 document.onkeydown = function(e){
@@ -33,6 +52,10 @@ document.onkeydown = function(e){
         p_dx = 3
         p_dy = 0
     }
+    if(e.key == " "){
+        lx.push(px);
+        ly.push(py);
+    }
 }
 //キーが離されたときに実行される
 document.onkeyup = function(e){
@@ -42,7 +65,11 @@ document.onkeyup = function(e){
 
 function draw(){
     ctx.clearRect(0/*開始地点*/,0,canvas.width/*終了地点*/,canvas.height)   //canvasをいったんクリアする //追加
-    player_draw();
+    player_draw()
+    l_draw()
+    for(var i = 0;i < ly.length/*リストの長さ */;i++){ //リストを読み込む
+        ly[i]-=10
+    }
     px += p_dx  //追加
     py += p_dy  //追加
 }
