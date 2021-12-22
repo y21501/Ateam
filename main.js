@@ -24,8 +24,9 @@ var lw = 6
 var lh = 15
 
 //エネミーの座標
-var ex = [0];
-var ey = [0];
+var ex = [100];
+var ey = [100];
+var es =36;
 
 
 //playerを描く関数
@@ -51,11 +52,26 @@ function l_draw(){
  function e_draw(){
     for(var i=0;i < ey.length;i++){
         ctx.beginPath() 
-        ctx.rect(ex[i],ey[i],36,36)
+        ctx.rect(ex[i],ey[i],es,es)
         ctx.fillStyle="#ff00ff"
         ctx.fill()
         ctx.closePath()
     }
+}
+
+function l_colllision() {
+    var colllision = false //衝突したか
+    var colllision_n = 0 //衝突したえねみーの個体番号
+    for (var i = 0; i < ly.length; i++) {
+        for (var j = 0; j < ey.length; j++) {
+            if (ex[j] + es > lx[i] && ey[j] + es > ly[i] && ex[j] < lx[i] + lh && lx[i] + lw) {
+                console.log("衝突しました")
+                colllision = true
+                colllision_n = j
+            }
+        }
+    }
+    return [colllision,colllision_n]
 }
 
 //キーが押されたときに実行される
@@ -85,6 +101,12 @@ function draw(){
     player_draw()
     l_draw()
     e_draw()
+    var l_return = l_colllision()
+    if(l_return[0]){
+        //ぶつかった個体を削除する（リストから削除する）
+        ex.splice(l_return[1],1)
+        ey.splice(l_return[1],1)
+    }
     for(var i = 0;i < ly.length/*リストの長さ */;i++){ //リストを読み込む
         ly[i]-=10
     }
@@ -154,7 +176,7 @@ draw();
 //         p_dy = 3
 //     }
 //     if(e.key == " "){
-//         lx.push(px)    //レーザー発射開始位置(playerの位置)をリストに追加
+//         lx.push(px)    //レーザー発射開始位置(p　layerの位置)をリストに追加
 //         ly.push(py)
 //     }
     
