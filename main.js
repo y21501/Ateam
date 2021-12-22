@@ -19,9 +19,13 @@ var ps = 30
 
 //レーザーの座標
 var lx = [0];
-var ly = [800];
+var ly = [0];
 var lw = 6
 var lh = 15
+
+//エネミーの座標
+var ex = [0];
+var ey = [0];
 
 
 //playerを描く関数
@@ -32,6 +36,7 @@ function player_draw(){
     ctx.fill()
     ctx.closePath()
 }
+
 //レーザー------------------------------------
 function l_draw(){
     for(var i = 0;i < ly.length;i++){
@@ -42,6 +47,17 @@ function l_draw(){
         ctx.closePath()
     }
 }
+
+ function e_draw(){
+    for(var i=0;i < ey.length;i++){
+        ctx.beginPath() 
+        ctx.rect(ex[i],ey[i],36,36)
+        ctx.fillStyle="#ff00ff"
+        ctx.fill()
+        ctx.closePath()
+    }
+}
+
 //キーが押されたときに実行される
 document.onkeydown = function(e){
     if(e.key == "ArrowLeft"){  //↑
@@ -53,10 +69,11 @@ document.onkeydown = function(e){
         p_dy = 0
     }
     if(e.key == " "){
-        lx.push(px);
+        lx.push(px+12);
         ly.push(py);
     }
 }
+
 //キーが離されたときに実行される
 document.onkeyup = function(e){
     p_dx = 0    //止める
@@ -67,8 +84,13 @@ function draw(){
     ctx.clearRect(0/*開始地点*/,0,canvas.width/*終了地点*/,canvas.height)   //canvasをいったんクリアする //追加
     player_draw()
     l_draw()
+    e_draw()
     for(var i = 0;i < ly.length/*リストの長さ */;i++){ //リストを読み込む
         ly[i]-=10
+    }
+    e_draw()
+    for(var i = 0;i < ey.length/*リストの長さ */;i++){ //リストを読み込む
+        ey[i]+= 2
     }
     px += p_dx  //追加
     py += p_dy  //追加
