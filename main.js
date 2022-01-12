@@ -76,7 +76,7 @@ function l_colllision() {
                 console.log("衝突しました")
                 colllision = true
                 colllision_n = j
-                if(life>0){
+                if(life>=0){
                     p+=1; //ポイントを1増やす
                     point.innerHTML = p
                 }
@@ -129,7 +129,7 @@ document.onkeydown = function(e){
     }
     if(e.key == " "){
         lx.push(px+12);
-        ly.push(py);
+        ly.push(py) ;
     }
 }
 
