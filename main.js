@@ -28,6 +28,8 @@ var ex = [100];
 var ey = [100];
 var es =36;
 
+var p = 0; //点数（ポイント）
+
 
 //playerを描く関数
 function player_draw(){
@@ -59,15 +61,22 @@ function l_draw(){
     }
 }
 
+function p_draw(){
+    ctx.font = "35px UTF-8"
+    ctx.fillStyle="#ffff00"
+    ctx.fillText(p,0,35)
+}
+
 function l_colllision() {
     var colllision = false //衝突したか
     var colllision_n = 0 //衝突したえねみーの個体番号
     for (var i = 0; i < ly.length; i++) {
         for (var j = 0; j < ey.length; j++) {
-            if (ex[j] + es > lx[i] && ey[j] + es > ly[i] && ex[j] < lx[i] + lh && lx[i] + lw) {
+            if (ex[j]+es>lx[i] && ey[j]+es>ly[i] && ex[j]<lx[i]+lw && ey[j]<ly[i]+lh) {
                 console.log("衝突しました")
                 colllision = true
                 colllision_n = j
+                p+=1; //ポイントを1増やす
             }
         }
     }
@@ -101,6 +110,7 @@ function draw(){
     player_draw()
     l_draw()
     e_draw()
+    p_draw()
     var l_return = l_colllision()
     if(l_return[0]){
         //ぶつかった個体を削除する（リストから削除する）
@@ -118,6 +128,13 @@ function draw(){
     py += p_dy  //追加
 }
 setInterval(draw,10);    //10ミリ秒単位で実行 //追加
+
+function e_make(){
+    ey.push(100);
+    ex.push(Math.floor(Math.random()*370)) //0~369
+}
+setInterval(e_make,1500);
+
 draw();
 
 
