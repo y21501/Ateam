@@ -11,6 +11,7 @@
 var canvas = document.getElementById("screeen");//canvasを読み込む
 var ctx = canvas.getContext("2d");
 var point = document.getElementById("score_value");
+var ret = document.getElementById("home");
 var px = 190    //player x座標
 var py = 740    //player y座標
 var pxe = [190]
@@ -137,6 +138,8 @@ document.onkeyup = function(e){
     p_dx = 0    //止める
     p_dy = 0
 }
+
+ret.addEventListener('click',function(){window.location.reload()});
 
 function draw(){
     ctx.clearRect(0/*開始地点*/,0,canvas.width/*終了地点*/,canvas.height)   //canvasをいったんクリアする //追加
