@@ -12,6 +12,8 @@ var canvas = document.getElementById("screeen");//canvasを読み込む
 var ctx = canvas.getContext("2d");
 var px = 190    //player x座標
 var py = 740    //player y座標
+var pxe = [190]
+var pye = [740]
 var p_dx = 0    //player xの速さ  //追加
 var p_dy = 0    //player yの速さ  //追加
 
@@ -74,22 +76,40 @@ function l_colllision() {
     var colllision_n = 0 //衝突したえねみーの個体番号
     for (var i = 0; i < ly.length; i++) {
         for (var j = 0; j < ey.length; j++) {
-            if (ex[j]+es>lx[i] && ey[j]+es>ly[i] && ex[j]<lx[i]+lw && ey[j]<ly[i]+lh) {
+            if (ey[j]+es>ly[i] && ex[j]+es>lx[i] && ex[j]<lx[i]+lw && ey[j]<ly[i]+lh) {
                 console.log("衝突しました")
                 colllision = true
                 colllision_n = j
-                p+=1; //ポイントを1増やす
+                if(life>0){
+                    p+=1; //ポイントを1増やす
+                }
             }
         }
     }
     return [colllision,colllision_n]
 }
 
+// function e_colllision() {
+//     var e_colllision = false //衝突したか
+//     var e_colllision_n = 0 //衝突したえねみーの個体番号
+//     for (var i = 0; i < pye.length; i++) {
+//         for (var j = 0; j < ey.length; j++) {
+//             if (ey[j]+es>py && ex[j]+es>px) {
+//                 console.log("自機に衝突しました")
+//                 e_colllision = true
+//                 e_colllision_n = j
+//                 life-=1; //ポイントを1増やす
+//             }
+//         }
+//     }
+//     return [e_colllision,e_colllision_n]
+// }
+
 function p_colllision() {
     var p_colllision = false //衝突したか
     var p_colllision_n = 0 //衝突したえねみーの個体番号
         for (var j = 0; j < ey.length; j++) {
-            if (ey[j]+es<0) {
+            if (ey[j]+es>800) {
                 console.log("突破されました")
                 p_colllision = true
                 p_colllision_n = j
@@ -130,6 +150,7 @@ function draw(){
     p_draw()
     var l_return = l_colllision()
     var p_return = p_colllision()
+    // var e_return = e_colllision()
     if(l_return[0]){
         //ぶつかった個体を削除する（リストから削除する）
         ex.splice(l_return[1],1)
@@ -140,6 +161,11 @@ function draw(){
         ex.splice(p_return[1],1)
         ey.splice(p_return[1],1)
     }
+    // if(e_return[0]){
+    //     //ぶつかった個体を削除する（リストから削除する）
+    //     ex.splice(e_return[1],1)
+    //     ey.splice(e_return[1],1)
+    // }
     for(var i = 0;i < ly.length/*リストの長さ */;i++){ //リストを読み込む
         ly[i]-=10
     }
@@ -149,13 +175,17 @@ function draw(){
     }
     px += p_dx  //追加
     py += p_dy  //追加
+
+    if(life<0){
+        game_over()
+    }
 }
 setInterval(draw,10);    //10ミリ秒単位で実行 //追加
 
 function game_over(){
     ctx.font = "50px UTF-8"
     ctx.fillStyle="#ffff00"
-    ctx.fillText("GameOvera",200,200)
+    ctx.fillText("GameOver",50,400)
 }
 
 function e_make(){
