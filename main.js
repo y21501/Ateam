@@ -10,6 +10,7 @@
 
 var canvas = document.getElementById("screeen");//canvasを読み込む
 var ctx = canvas.getContext("2d");
+var point = document.getElementById("score_value");
 var px = 190    //player x座標
 var py = 740    //player y座標
 var pxe = [190]
@@ -65,12 +66,6 @@ function l_draw(){
     }
 }
 
-function p_draw(){
-    ctx.font = "35px UTF-8"
-    ctx.fillStyle="#ffff00"
-    ctx.fillText(p,0,35)
-}
-
 function l_colllision() {
     var colllision = false //衝突したか
     var colllision_n = 0 //衝突したえねみーの個体番号
@@ -82,6 +77,7 @@ function l_colllision() {
                 colllision_n = j
                 if(life>0){
                     p+=1; //ポイントを1増やす
+                    point.innerHTML = p
                 }
             }
         }
@@ -147,7 +143,6 @@ function draw(){
     player_draw()
     l_draw()
     e_draw()
-    p_draw()
     var l_return = l_colllision()
     var p_return = p_colllision()
     // var e_return = e_colllision()
@@ -185,7 +180,7 @@ setInterval(draw,10);    //10ミリ秒単位で実行 //追加
 function game_over(){
     ctx.font = "50px UTF-8"
     ctx.fillStyle="#ffff00"
-    ctx.fillText("GameOver",50,400)
+    ctx.fillText("GameOver",75,400)
 }
 
 function e_make(){
