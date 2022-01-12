@@ -30,6 +30,8 @@ var es =36;
 
 var p = 0; //点数（ポイント）
 
+var life = 2;
+
 
 //playerを描く関数
 function player_draw(){
@@ -83,6 +85,21 @@ function l_colllision() {
     return [colllision,colllision_n]
 }
 
+function p_colllision() {
+    var p_colllision = false //衝突したか
+    var p_colllision_n = 0 //衝突したえねみーの個体番号
+        for (var j = 0; j < ey.length; j++) {
+            if (ey[j]+es<0) {
+                console.log("突破されました")
+                p_colllision = true
+                p_colllision_n = j
+                life-=1; //ポイントを1増やす
+            }
+        }
+    
+    return [p_colllision,p_colllision_n]
+}
+
 //キーが押されたときに実行される
 document.onkeydown = function(e){
     if(e.key == "ArrowLeft"){  //↑
@@ -112,10 +129,16 @@ function draw(){
     e_draw()
     p_draw()
     var l_return = l_colllision()
+    var p_return = p_colllision()
     if(l_return[0]){
         //ぶつかった個体を削除する（リストから削除する）
         ex.splice(l_return[1],1)
         ey.splice(l_return[1],1)
+    }
+    if(p_return[0]){
+        //ぶつかった個体を削除する（リストから削除する）
+        ex.splice(p_return[1],1)
+        ey.splice(p_return[1],1)
     }
     for(var i = 0;i < ly.length/*リストの長さ */;i++){ //リストを読み込む
         ly[i]-=10
@@ -128,6 +151,12 @@ function draw(){
     py += p_dy  //追加
 }
 setInterval(draw,10);    //10ミリ秒単位で実行 //追加
+
+function game_over(){
+    ctx.font = "50px UTF-8"
+    ctx.fillStyle="#ffff00"
+    ctx.fillText("GameOvera",200,200)
+}
 
 function e_make(){
     ey.push(100);
