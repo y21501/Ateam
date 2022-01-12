@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <title>shooting geme</title>
-    <link rel="stylesheet" href="style.css">
     <script src="index.html"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -17,14 +22,14 @@
 
         <main>
             <div class="Control">
-                <p class="key_control">操作方法</p>
+                <p class="key_control">KEY CONTROL</p>
                 <div class="control_RL">
-                    <p class="move">移動(キーボード)</p>
+                    <p class="move">MOVE</p>
                     <div class="arrow_left"></div>
                     <div class="arrow"></div>
                 </div>
                 <div class="shoot">
-                    <p class="shooting">発射</p>
+                    <p class="shooting">SHOOT</p>
                     <p class="space">space</p>
                 </div>
             </div>
@@ -33,8 +38,8 @@
                 <p id="info"></p>
             </div>
             <div class="score">
-                <p>score</p>
-                <p class="score_bord"></p>
+                <p class="score_title">score</p>
+                <p id="score_value" class="score_bord">0</p>
             </div>
         </main>
     </div>

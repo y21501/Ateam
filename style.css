@@ -3,7 +3,9 @@
     margin: 0 auto;
     padding: 0 4%;
 }
-
+body{
+    font-family: 'DotGothic16', sans-serif;
+}
 header{
     height: 70px;
     background-color: #ccb0ff;
@@ -28,6 +30,7 @@ main{
     margin-top: 500px;
     height: 300px;
     width: 180px;
+    font-size: 20px;
     
     margin-right: 0;
     background-color: #fff;
@@ -125,7 +128,9 @@ main{
     margin-top: 20px;
 }
 .key_control{
-    height: 35px;
+    font-size: 30px;
+    margin: 0;
+    height: 55px;
     border-bottom: 1px solid #000;
 }
 .shooting{
@@ -157,4 +162,14 @@ main{
     margin-right: 0;
     background-color: #fff;
     text-align: center;
+}
+.score_title{
+    font-size: 50px;
+    margin: 0;
+    height: 85px;
+    border-bottom: 1px solid #000;
+}
+.score_bord{
+    margin-top: 40px;
+    font-size: 90px;
 }
