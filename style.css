@@ -6,6 +6,21 @@
 body{
     font-family: 'DotGothic16', sans-serif;
 }
+.HOME_TITLE{
+    text-align: center;
+    margin-top: 20vh;
+}
+h1{
+    font-size: 100px;
+}
+.HOME_TITLE p{
+    font-size: 30px;
+}
+.ST_btn{
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 50px;
+    margin-top: 100px;
+}
 header{
     height: 70px;
     background-color: #ccb0ff;
