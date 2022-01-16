@@ -25,6 +25,7 @@ main{
     -webkit-justify-content: space-around;
     justify-content: space-around;
 }
+
 .Control{
     bottom: 50px;  
     margin-top: 500px;

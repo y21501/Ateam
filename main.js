@@ -36,6 +36,12 @@ var p = 0; //点数（ポイント）
 
 var life = 2;
 
+// ホーム画面からの遷移
+document.getElementById("start_button")
+        .addEventListener("click", function() {
+  document.getElementById("home_UI").hidden = true;
+  document.getElementById("game_UI").hidden = false;
+
 
 //playerを描く関数
 function player_draw(){
@@ -117,6 +123,8 @@ function p_colllision() {
     return [p_colllision,p_colllision_n]
 }
 
+
+
 //キーが押されたときに実行される
 document.onkeydown = function(e){
     if(e.key == "ArrowLeft"){  //↑
@@ -194,7 +202,7 @@ setInterval(e_make,1500);
 
 draw();
 
-
+}, false);
 
 // var canvas = document.getElementById("screeen");//canvasを読み込む
 // var ctx = canvas.getContext("2d");
