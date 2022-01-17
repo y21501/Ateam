@@ -40,6 +40,7 @@ document.getElementById("start_button")
         .addEventListener("click", function() {
   document.getElementById("home_UI").hidden = true;
   document.getElementById("game_UI").hidden = false;
+  
 //playerを描く関数
 function player_draw(){
     ctx.beginPath()
@@ -59,7 +60,7 @@ function l_draw(){
         ctx.closePath()
     }
 }
-
+// エネミー
  function e_draw(){
     for(var i=0;i < ey.length;i++){
         ctx.beginPath() 
@@ -68,6 +69,13 @@ function l_draw(){
         ctx.fill()
         ctx.closePath()
     }
+}
+
+ // 残機
+ function life_draw(){
+    ctx.font = "600px UTF-8"
+    ctx.fillStyle="#6699ff"
+    ctx.fillText(life,20,600)
 }
 
 function l_colllision() {
@@ -146,6 +154,9 @@ ret.addEventListener('click',function(){window.location.reload()});
 
 function draw(){
     ctx.clearRect(0/*開始地点*/,0,canvas.width/*終了地点*/,canvas.height)   //canvasをいったんクリアする //追加
+    if(life >= 0){
+        life_draw()
+    }
     player_draw()
     l_draw()
     e_draw()
