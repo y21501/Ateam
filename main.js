@@ -168,6 +168,9 @@ function draw(){
         ly[i]-=10
     }
     e_draw()
+
+    //エネミーの移動スピード変更
+
     for(var i = 0;i < ey.length/*リストの長さ */;i++){ //リストを読み込む
         ey[i]+= 2
     }
