@@ -12,6 +12,7 @@ var canvas = document.getElementById("screeen");//canvasを読み込む
 var ctx = canvas.getContext("2d");
 var point = document.getElementById("score_value");
 var ret = document.getElementById("home");
+var level = document.getElementById("level");
 var px = 190    //player x座標
 var py = 740    //player y座標
 var pxe = [190]
@@ -34,13 +35,34 @@ var es =36;
 
 var p = 0; //点数（ポイント）
 
-var life = 2;
+var life = 2; // 残機
+
+let spead;
+let freq;
 
 document.getElementById("start_button")
         .addEventListener("click", function() {
   document.getElementById("home_UI").hidden = true;
   document.getElementById("game_UI").hidden = false;
-  
+
+  switch(level.value){
+    case "easy":
+        spead = 2;
+        freq = 1500;
+        break;
+    case "nomal":
+        spead = 3;
+        freq = 1000;
+        break;
+    case "hard":
+        spead = 5;
+        freq = 1000;
+        break;
+    case "verry_hard":
+        spead = 6;
+        freq = 800;
+}
+
 //playerを描く関数
 function player_draw(){
     ctx.beginPath()
@@ -186,7 +208,7 @@ function draw(){
     //エネミーの移動スピード変更
 
     for(var i = 0;i < ey.length/*リストの長さ */;i++){ //リストを読み込む
-        ey[i]+= 2
+        ey[i]+= spead;
     }
     px += p_dx  //追加
     py += p_dy  //追加
@@ -207,7 +229,7 @@ function e_make(){
     ey.push(100);
     ex.push(Math.floor(Math.random()*370)) //0~369
 }
-setInterval(e_make,1500);
+setInterval(e_make,freq);
 
 draw();
 }, false);
