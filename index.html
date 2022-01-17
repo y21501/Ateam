@@ -14,35 +14,45 @@
 </head>
 
 <body>
-    <div class="wrapper">
-        <header id="buttton">
-            <input type="button" id="home" value="戻る">
-            <input type="button" id="pose" value="停止">
-        </header>
-
-        <main>
-            <div class="Control">
-                <p class="key_control">KEY CONTROL</p>
-                <div class="control_RL">
-                    <p class="move">MOVE</p>
-                    <div class="arrow_left"></div>
-                    <div class="arrow"></div>
-                </div>
-                <div class="shoot">
-                    <p class="shooting">SHOOT</p>
-                    <p class="space">space</p>
-                </div>
-            </div>
-            <div class="SCreen">
-                <canvas id="screeen" width="400px" height="800px"></canvas>
-                <p id="info"></p>
-            </div>
-            <div class="score">
-                <p class="score_title">score</p>
-                <p id="score_value" class="score_bord">0</p>
-            </div>
-        </main>
+    <div id="home_UI" class="HOME_TITLE wrapper" >
+        <div class="container">
+            <h1>A team SHOOTING</h1>
+            <p>敵を倒して高得点を狙おう!!</p>
+        </div>
+        <button class="ST_btn" id="start_button">START</button>
     </div>
+    <div id="game_UI" hidden>
+        <div class="wrapper">
+            <header id="buttton">
+                <input type="button" id="home" value="戻る">
+                <input type="button" id="pause" value="停止">
+            </header>
+
+            <main>
+                <div class="Control">
+                    <p class="key_control">KEY CONTROL</p>
+                    <div class="control_RL">
+                        <p class="move">MOVE</p>
+                        <div id="Arrow_L" class="arrow_left"></div>
+                        <div id="Arrow_R" class="arrow"></div>
+                    </div>
+                    <div class="shoot">
+                        <p class="shooting">SHOOT</p>
+                        <p class="space">space</p>
+                    </div>
+                </div>
+                <div class="SCreen">
+                    <canvas id="screeen" width="400px" height="800px"></canvas>
+                    <p id="info"></p>
+                </div>
+                <div class="score">
+                    <p class="score_title">score</p>
+                    <p id="score_value" class="score_bord">0</p>
+                </div>
+                
+            </main>
+        </div>
+</div>
 
     <script src="main.js"></script>
 </body>
