@@ -31,7 +31,7 @@ var lh = 15
 //エネミーの座標
 var ex = [100];
 var ey = [100];
-var es =36;
+var es = 50;
 
 var p = 0; //点数（ポイント）
 
@@ -58,18 +58,21 @@ document.getElementById("start_button")
         spead = 5;
         freq = 1000;
         break;
-    case "verry_hard":
+    case "very_hard":
         spead = 6;
         freq = 800;
 }
 
 //playerを描く関数
 function player_draw(){
-    ctx.beginPath()
-    ctx.rect(px,py,30,30)
-    ctx.fillStyle = "#00ff00"
-    ctx.fill()
-    ctx.closePath()
+    // ctx.beginPath()
+    // ctx.rect(px,py,30,30)
+    // ctx.fillStyle = "#00ff00"
+    // ctx.fill()
+    // ctx.closePath()
+    let player_img = new Image();
+    player_img.src = "./picture/kao.png";
+    ctx.drawImage(player_img, px, py, ps, ps);
 }
 
 //レーザー------------------------------------
@@ -85,11 +88,14 @@ function l_draw(){
 // エネミー
  function e_draw(){
     for(var i=0;i < ey.length;i++){
-        ctx.beginPath() 
-        ctx.rect(ex[i],ey[i],es,es)
-        ctx.fillStyle="#ff00ff"
-        ctx.fill()
-        ctx.closePath()
+        // ctx.beginPath() 
+        // ctx.rect(ex[i],ey[i],es,es)
+        // ctx.fillStyle="#ff00ff"
+        // ctx.fill()
+        // ctx.closePath()
+        let enemy_img = new Image();
+        enemy_img.src = "./picture/0da54ca2.png";
+        ctx.drawImage(enemy_img, ex[i], ey[i], es, es)
     }
 }
 

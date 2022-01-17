@@ -16,10 +16,21 @@ h1{
 .HOME_TITLE p{
     font-size: 30px;
 }
+.select_option{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+#level{
+    font-size: 20px;
+    text-align: center;
+}
+
 .ST_btn{
     font-family: 'DotGothic16', sans-serif;
     font-size: 50px;
-    margin-top: 100px;
+    margin-top: 10px;
 }
 header{
     height: 70px;
