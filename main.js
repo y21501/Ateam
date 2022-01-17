@@ -36,7 +36,10 @@ var p = 0; //点数（ポイント）
 
 var life = 2;
 
-
+document.getElementById("start_button")
+        .addEventListener("click", function() {
+  document.getElementById("home_UI").hidden = true;
+  document.getElementById("game_UI").hidden = false;
 //playerを描く関数
 function player_draw(){
     ctx.beginPath()
@@ -196,7 +199,7 @@ function e_make(){
 setInterval(e_make,1500);
 
 draw();
-
+}, false);
 
 
 // var canvas = document.getElementById("screeen");//canvasを読み込む
