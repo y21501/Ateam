@@ -13,6 +13,7 @@ var ctx = canvas.getContext("2d");
 var point = document.getElementById("score_value");
 var ret = document.getElementById("home");
 let back_home = document.getElementById("go_home");
+let pose = document.getElementById("pose");
 var level = document.getElementById("level");
 var px = 190    //player x座標
 var py = 740    //player y座標
@@ -180,6 +181,10 @@ document.onkeyup = function(e){
 }
 
 ret.addEventListener('click',function(){window.location.reload()});
+pose.addEventListener("click", function(){
+    document.getElementById("SCORE").hidden = true;
+    document.getElementById("secret").hidden = false;
+});
 
 function draw(){
     ctx.clearRect(0/*開始地点*/,0,canvas.width/*終了地点*/,canvas.height)   //canvasをいったんクリアする //追加
@@ -222,6 +227,8 @@ function draw(){
 
     if(life<0){
         game_over();
+        document.getElementById("SCORE").hidden = false;
+        document.getElementById("secret").hidden = true;
         back_home.hidden = false;
         back_home.addEventListener("click", function(){
             window.location.reload();
